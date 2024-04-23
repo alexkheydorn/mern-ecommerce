@@ -5,21 +5,16 @@ on:
     branches:
       - "main"
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
         include:
           - dockerfile: ./client/Dockerfile
-            image: ghcr.io/alexkheydorn/homestead-client
+            image: alexkheydorn/homestead-client
           - dockerfile: ./server/Dockerfile
-            image: ghcr.io/alexkheydorn/homestead-server
+            image: alexkheydorn/homestead-server
     permissions:
       contents: read
       packages: write
@@ -31,7 +26,6 @@ jobs:
       - name: Log in to the Container registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
