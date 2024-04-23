@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copy the rest of the client code
-COPY ./client .
+COPY . .
 
 # Build the client for production
 RUN npm run build
