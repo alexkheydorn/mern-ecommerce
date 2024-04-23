@@ -13,8 +13,10 @@ jobs:
         include:
           - dockerfile: ./client/Dockerfile
             image: alexkheydorn/homestead-client
+            context: ./client
           - dockerfile: ./server/Dockerfile
             image: alexkheydorn/homestead-server
+            context: ./server
     permissions:
       contents: read
       packages: write
@@ -38,7 +40,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ${{ matrix.context }}
           file: ${{ matrix.dockerfile }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
