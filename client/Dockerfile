@@ -13,6 +13,8 @@ RUN npm install
 # Copy the rest of the client code
 COPY . .
 
+RUN npm run
+
 # Build the client for production
 RUN npm run build
 
