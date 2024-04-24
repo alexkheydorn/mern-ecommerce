@@ -13,8 +13,11 @@ RUN npm install
 # Copy the rest of the client code
 COPY . .
 
+# Build the client for production
+RUN npm run build
+
 # Expose port 8080 for the client
 EXPOSE 8080
 
 # Start the client
-CMD [ "npm", "run", "prod" ]
+CMD [ "npm", "run", "dev" ]
