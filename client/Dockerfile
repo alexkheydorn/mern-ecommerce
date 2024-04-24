@@ -16,8 +16,8 @@ COPY . .
 # Build the client for production
 RUN npm run build
 
-# Expose port 8080 for the client
-EXPOSE 8080
+# Expose port 8088 for the client
+EXPOSE 8088
 
 # Start the client
 CMD [ "npm", "run", "dev" ]

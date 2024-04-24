@@ -13,8 +13,8 @@ RUN npm install
 # Copy the rest of the server code
 COPY . .
 
-# Expose port 3000 for the server
-EXPOSE 3000
+# Expose port 3008 for the server
+EXPOSE 3008
 
 # Start the server
 CMD [ "npm", "start" ]
